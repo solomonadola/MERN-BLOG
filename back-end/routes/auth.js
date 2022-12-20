@@ -4,7 +4,13 @@ const bcrypt = require('bcrypt');
 
 router.post('/register', async (req, res) => {
 	const { error } = validate(req.body);
-	if (error) return res.status(400).send(error);
+	if (error) return res.status(400).send(error.message);
+	if (await User.findOne({ userName: req.body.userName })) {
+		return res.status(400).send('Username "' + req.body.userName + '" is already taken');
+	}
+	if (await User.findOne({ email: req.body.email })) {
+		return res.status(400).send('email "' + req.body.email + '" is already taken');
+	}
 	const newUser = new User(req.body);
 	try {
 		const salt = await bcrypt.genSalt(10);
@@ -13,7 +19,7 @@ router.post('/register', async (req, res) => {
 		const result = await newUser.save();
 		return res.status(200).send(result);
 	} catch (err) {
-		return res.status(500).send('something went wrong');
+		return res.status(500).send(`something went wrong ${err})`);
 	}
 });
 
