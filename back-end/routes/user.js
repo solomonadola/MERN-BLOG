@@ -4,6 +4,8 @@ const bcrypt = require('bcrypt');
 const Post = require('../models/posts');
 
 router.get('/:id', async (req, res) => {
+	if (!isValidObjectId(req.params.id)) return res.status(400).send(" invalid id");
+
 	try {
 		const user = await User.findById(req.params.id);
 		if (!user) return res.status(400).send('can not find any user with this id');
@@ -14,6 +16,7 @@ router.get('/:id', async (req, res) => {
 	}
 });
 router.put('/:id', async (req, res) => {
+	if (!isValidObjectId(req.params.id)) return res.status(400).send(" invalid id");
 
 	try {
 		const user = await User.findById(req.params.id);

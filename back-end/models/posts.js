@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const Joi = require('joi');
 const postSchema = new mongoose.Schema(
 	{
 		title: {
@@ -12,7 +12,7 @@ const postSchema = new mongoose.Schema(
 		},
 		photo: {
 			type: String,
-			required: false,
+			required: false
 		},
 		author: {
 			type: String,
@@ -31,9 +31,13 @@ function validate(input) {
 		detail: Joi.string().min(10).required(),
 		author: Joi.string().required(),
 		category: Joi.string().required(),
+		photo: Joi.string()
 	});
 	return schema.validate(input);
 }
 const Post = mongoose.model('Post', postSchema);
 
-module.exports = Post;
+exports.Post = Post;
+exports.validate = validate;
+
+
