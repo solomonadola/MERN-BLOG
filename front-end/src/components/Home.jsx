@@ -1,8 +1,10 @@
-
+import Category from "./Category";
+import Header from "./Header";
 
 export const Home = () => {
-    return (
-        <h1>hello there welcome this is home component</h1>
-    )
-
-}
+  return (
+    <>
+      <Category />
+    </>
+  );
+};

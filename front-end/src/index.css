@@ -1,13 +1,49 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap');
+
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  font-family: 'Poppins', sans-serif;
+background-color: #faeaea;
+}
+h1,h2{
+  font-weight: 600;
+}
+h3{
+  font-size: 18px;
+}
+ul,li,a,button,input,textarea{
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+
+}
+::placeholder{
+  font-size: 16px;
+}
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+p{
+  color: #0e0c0c;
+  font-size: 18px;
+}
+label{
+  color: #222222;
+  font-size: 15px;
+}
+form, .boxItems{
+  border: 1px solid #faeaea;
+  border-radius: 15px;
+  padding: 15px;
+  background-color: #d9c2c2;
 }
